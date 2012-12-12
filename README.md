@@ -11,16 +11,21 @@ A few tools are provided:
 
 * svgpath2code : a command line tool that accept the SVG path data and output source code;
 
+* SvgPatherCoder : a GUI tool for OSX (that you can build with MonoMac or Xamarin.Mac);
+
 A sample application (useful for screenshots ;-) is also included in the AwesomeDemo directory.
 
 
 License
 =======
 
-The samples, like the library, is licensed under the 
+The library and tools are licensed under the
+[the GNU LGPL 2 license only (no "later versions")](http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html)
+
+The samples is licensed under the 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Note that the source code that is produced by this tool falls under the license of the original SVG path.
+Note that the source code that is produced by the tools falls under the license of the original SVG path.
 
 
 Screenshots

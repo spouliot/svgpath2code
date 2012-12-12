@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convert-font-awesome", "con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeDemo", "AwesomeDemo\AwesomeDemo.csproj", "{A8DA40B7-E565-4D54-A20E-66C78AF57CD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgPathCoder", "SvgPathCoder\SvgPathCoder.csproj", "{870583FA-D51F-43D9-9790-5E7129F88AED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -40,6 +42,24 @@ Global
 		{85178F62-FED3-4199-904F-7FE107F27F98}.Release|iPhoneSimulator.Build.0 = Release|x86
 		{85178F62-FED3-4199-904F-7FE107F27F98}.Release|x86.ActiveCfg = Release|x86
 		{85178F62-FED3-4199-904F-7FE107F27F98}.Release|x86.Build.0 = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Ad-Hoc|iPhone.ActiveCfg = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Ad-Hoc|iPhone.Build.0 = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.AppStore|iPhone.ActiveCfg = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.AppStore|iPhone.Build.0 = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.AppStore|x86.ActiveCfg = AppStore|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.AppStore|x86.Build.0 = AppStore|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|iPhone.ActiveCfg = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|iPhone.Build.0 = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|iPhoneSimulator.Build.0 = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|x86.ActiveCfg = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Debug|x86.Build.0 = Debug|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|iPhone.ActiveCfg = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|iPhone.Build.0 = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|iPhoneSimulator.ActiveCfg = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|iPhoneSimulator.Build.0 = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|x86.ActiveCfg = Release|x86
+		{870583FA-D51F-43D9-9790-5E7129F88AED}.Release|x86.Build.0 = Release|x86
 		{A8DA40B7-E565-4D54-A20E-66C78AF57CD2}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{A8DA40B7-E565-4D54-A20E-66C78AF57CD2}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{A8DA40B7-E565-4D54-A20E-66C78AF57CD2}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
@@ -96,6 +116,6 @@ Global
 		{FAF6E910-3650-4F4F-9487-F2F1938A0569}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = svgpath2code\svgpath2code.csproj
+		StartupItem = SvgPathCoder\SvgPathCoder.csproj
 	EndGlobalSection
 EndGlobal
