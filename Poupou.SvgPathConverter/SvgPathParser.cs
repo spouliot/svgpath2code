@@ -1,7 +1,7 @@
 // Authors:
 //	Sebastien Pouliot  <sebastien@xamarin.com>
 //
-// Copyright 2012 Xamarin Inc.
+// Copyright 2012-2013 Xamarin Inc.
 //
 // This file is mostly based on the C++ code from once magnificent Moonlight
 // https://github.com/mono/moon/blob/master/src/xaml.cpp
@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 
 namespace Poupou.SvgPathConverter {
 
@@ -69,7 +70,7 @@ namespace Poupou.SvgPathConverter {
 		{
 			int end = FindNonFloat (svg, pos);
 			string s = svg.Substring (pos, end - pos);
-			float f = Single.Parse (s);
+			float f = Single.Parse (s, CultureInfo.InvariantCulture);
 			pos = end;
 			return f;
 		}
@@ -331,173 +332,5 @@ namespace Poupou.SvgPathConverter {
 			}
 			formatter.Epilogue ();
 		}
-#if false
-static Geometry *
-geometry_from_str (const char *str)
-{
-	char *inptr = (char *) str;
-	Point cp = Point (0, 0);
-	Point cp1, cp2, cp3;
-	Point start;
-	char *end;
-	PathGeometry *pg = NULL;
-	FillRule fill_rule = FillRuleEvenOdd;
-	bool cbz = false; // last figure is a cubic bezier curve
-	bool qbz = false; // last figure is a quadratic bezier curve
-	Point cbzp, qbzp; // points needed to create "smooth" beziers
-
-	moon_path *path = moon_path_new (10);
-
-	while (*inptr) {
-		if (g_ascii_isspace (*inptr))
-			inptr++;
-
-		if (!inptr[0])
-			break;
-
-		bool relative = false;
-
-		char c = *inptr;
-		inptr = g_utf8_next_char (inptr);
-
-		switch (c) {
-		case 'c':
-			relative = true;
-		case 'C':
-		{
-			while (more_points_available (&inptr)) {
-				if (!get_point (&cp1, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp1);
-
-				advance (&inptr);
-
-				if (!get_point (&cp2, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp2);
-
-				advance (&inptr);
-
-				if (!get_point (&cp3, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp3);
-
-				advance (&inptr);
-
-				moon_curve_to (path, cp1.x, cp1.y, cp2.x, cp2.y, cp3.x, cp3.y);
-
-				cp1.x = cp3.x;
-				cp1.y = cp3.y;
-			}
-			cp.x = cp3.x;
-			cp.y = cp3.y;
-			cbz = true;
-			cbzp.x = cp2.x;
-			cbzp.y = cp2.y;
-			qbz = false;
-			break;
-		}
-		case 's':
-			relative = true;
-		case 'S':
-		{
-			while (more_points_available (&inptr)) {
-				if (!get_point (&cp2, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp2);
-
-				advance (&inptr);
-
-				if (!get_point (&cp3, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp3);
-
-				if (cbz) {
-					cp1.x = 2 * cp.x - cbzp.x;
-					cp1.y = 2 * cp.y - cbzp.y;
-				} else
-					cp1 = cp;
-
-				moon_curve_to (path, cp1.x, cp1.y, cp2.x, cp2.y, cp3.x, cp3.y);
-				cbz = true;
-				cbzp.x = cp2.x;
-				cbzp.y = cp2.y;
-
-				cp.x = cp3.x;
-				cp.y = cp3.y;
-
-				advance (&inptr);
-			}
-			qbz = false;
-			break;
-		}
-		case 'a':
-			relative = true;
-		case 'A':
-		{
-			while (more_points_available (&inptr)) {
-				if (!get_point (&cp1, &inptr))
-					break;
-
-				advance (&inptr);
-
-				double angle = g_ascii_strtod (inptr, &end);
-				if (end == inptr)
-					break;
-
-				inptr = end;
-				advance (&inptr);
-
-				int is_large = strtol (inptr, &end, 10);
-				if (end == inptr)
-					break;
-
-				inptr = end;
-				advance (&inptr);
-
-				int sweep = strtol (inptr, &end, 10);
-				if (end == inptr)
-					break;
-
-				inptr = end;
-				advance (&inptr);
-
-				if (!get_point (&cp2, &inptr))
-					break;
-
-				if (relative)
-					make_relative (&cp, &cp2);
-
-				moon_arc_to (path, cp1.x, cp1.y, angle, is_large, sweep, cp2.x, cp2.y);
-
-				cp.x = cp2.x;
-				cp.y = cp2.y;
-
-				advance (&inptr);
-			}
-			cbz = qbz = false;
-			break;
-		}
-	}
-
-	pg = new PathGeometry (path);
-	pg->SetFillRule (fill_rule);
-	return pg;
-
-bad_pml:
-	moon_path_destroy (path);
-	return NULL;
-}		}
-#endif
 	}
 }
