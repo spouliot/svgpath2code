@@ -1,7 +1,7 @@
 // Authors:
 //	Sebastien Pouliot  <sebastien@xamarin.com>
 //
-// Copyright 2012 Xamarin Inc.
+// Copyright 2012-2013 Xamarin Inc.
 //
 // Licensed under the GNU LGPL 2 license only (no "later versions")
 
@@ -56,6 +56,8 @@ class Program {
 			if (!line.StartsWith (".icon-", StringComparison.Ordinal))
 				continue;
 			int p = line.IndexOf (':');
+			if (p == -1)
+				continue;
 			string name = line.Substring (1, p - 1).Replace ('-', '_');
 			p = line.IndexOf ("content: \"\\", StringComparison.Ordinal);
 			if (p == -1)
